@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RENTRO - Vehicle Rental Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* Custom styles for map placeholder and GPS tracking */
+    #map-placeholder {
+      background: url('https://via.placeholder.com/600x300?text=Map+View') no-repeat center center;
+      background-size: cover;
+      height: 300px;
+      border-radius: 8px;
+    }
+    .gps-tracker {
+      background: linear-gradient(45deg, #4CAF50, #81C784);
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-4">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">RENTRO</h1>
+      <nav class="space-x-4">
+        <a href="#home" class="hover:underline">Home</a>
+        <a href="#search" class="hover:underline">Search Vehicles</a>
+        <a href="#list-vehicle" class="hover:underline">List Your Vehicle</a>
+        <a href="#login" class="hover:underline">Login</a>
+        <a href="#register" class="hover:underline">Sign Up</a>
+          <a href="#Contact us" class="hover:underline">Contact us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="bg-blue-500 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-4">Rent Vehicles with Ease on RENTRO</h2>
+      <p class="text-lg mb-6">Find or list vehicles for rent in your city with real-time availability and secure payments.</p>
+      <a href="#search" class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500">Find a Vehicle</a>
+    </div>
+  </section>
+
+  <!-- User Registration/Login -->
+  <section id="register" class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Join RENTRO</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Customer Signup -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Customer Sign Up</h3>
+          <form>
+            <input type="text" placeholder="Name" class="w-full p-2 mb-4 border rounded">
+            <input type="email" placeholder="Email" class="w-full p-2 mb-4 border rounded">
+            <input type="tel" placeholder="Phone" class="w-full p-2 mb-4 border rounded">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700">Sign Up</button>
+            <p class="text-center mt-4">or sign up with</p>
+            <div class="flex justify-center space-x-4 mt-2">
+              <button class="bg-gray-200 p-2 rounded"><i class="fab fa-google"></i></button>
+              <button class="bg-gray-200 p-2 rounded"><i class="fab fa-facebook"></i></button>
+              <button class="bg-gray-200 p-2 rounded"><i class="fab fa-apple"></i> iOS ID</button>
+            </div>
+          </form>
+        </div>
+        <!-- Owner Signup -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Vehicle Owner Sign Up</h3>
+          <form>
+            <input type="text" placeholder="Name" class="w-full p-2 mb-4 border rounded">
+            <input type="email" placeholder="Email" class="w-full p-2 mb-4 border rounded">
+            <input type="tel" placeholder="Phone" class="w-full p-2 mb-4 border rounded">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700">Sign Up</button>
+            <p class="text-center mt-4">or sign up with</p>
+            <div class="flex justify-center space-x-4 mt-2">
+              <button class="bg-gray-200 p-2 rounded"><i class="fab fa-google"></i></button>
+              <button class="bg-gray-200 p-2 rounded"><i class="fab fa-facebook"></i></button>
+              <button class="bg-gray-200 p-2 rounded"><i class="fab fa-apple"></i> iOS ID</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Login Section -->
+      <div class="mt-12 bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
+        <h3 class="text-xl font-semibold mb-4">Sign In</h3>
+        <form>
+          <input type="email" placeholder="Email" class="w-full p-2 mb-4 border rounded">
+          <input type="password" placeholder="Password" class="w-full p-2 mb-4 border rounded">
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700">Sign In</button>
+          <p class="text-center mt-4">or sign in with</p>
+          <div class="flex justify-center space-x-4 mt-2">
+            <button class="bg-gray-200 p-2 rounded"><i class="fab fa-google"></i></button>
+            <button class="bg-gray-200 p-2 rounded"><i class="fab fa-facebook"></i></button>
+            <button class="bg-gray-200 p-2 rounded"><i class="fab fa-apple"></i> iOS ID</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vehicle Search -->
+  <section id="search" class="py-16 bg-gray-200">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Find Your Vehicle</h2>
+      <div class="flex flex-col md:flex-row gap-4 mb-8">
+        <input type="text" placeholder="Enter location or pin code" class="p-2 border rounded flex-1">
+        <select class="p-2 border rounded">
+          <option>Vehicle Type</option>
+          <option>Car</option>
+          <option>Two Wheelers</option>
+        </select>
+        <input type="date" class="p-2 border rounded">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Search</button>
+      </div>
+      <div id="map-placeholder" class="mb-8"></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Vehicle Card Example -->
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <img src="https://via.placeholder.com/300x200?text=Vehicle+Image" alt="Vehicle" class="w-full h-40 object-cover rounded">
+          <h3 class="text-lg font-semibold mt-2">Sample Vehicle 2023</h3>
+          <p class="text-gray-600"></p>
+          <button class="bg-blue-600 text-white px-4 py-2 mt-4 rounded w-full hover:bg-blue-700">Book Now</button>
+        </div>
+        <!-- Repeat for more vehicles -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Vehicle Listing (Owner) -->
+  <section id="list-vehicle" class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">List Your Vehicle</h2>
+      <div class="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+        <form>
+          <input type="text" placeholder="Vehicle Brand" class="w-full p-2 mb-4 border rounded">
+          <input type="text" placeholder="Model" class="w-full p-2 mb-4 border rounded">
+          <input type="number" placeholder="Year" class="w-full p-2 mb-4 border rounded">
+          <input type="file" multiple class="w-full p-2 mb-4 border rounded" accept="image/*">
+          <input type="text" placeholder="Location (Pin Code)" class="w-full p-2 mb-4 border rounded">
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700">List Vehicle</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Dashboard -->
+  <section id="customer-dashboard" class="py-16 bg-gray-200">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Customer Dashboard</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Active Bookings</h3>
+         <div class="gps-tracker mt-4">
+            <p>Live GPS Tracking: <span>Customer Location</span></p>
+            <!-- JavaScript integration needed for real-time GPS -->
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Payment History</h3>
+          <!-- Payment gateway integration placeholder -->
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Saved Vehicles</h3>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Owner Dashboard -->
+  <section id="owner-dashboard" class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Owner Dashboard</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Current Listings</h3>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Earnings</h3>
+          <button class="bg-green-600 text-white px-4 py-2 mt-4 rounded w-full hover:bg-green-700">Withdraw</button>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-4">Upcoming Bookings</h3>
+         <div class="gps-tracker mt-4">
+            <p>Track Renter: <span>Live Location</span></p>
+            <!-- JavaScript integration needed for real-time GPS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ratings & Reviews -->
+  <section id="reviews" class="py-16 bg-gray-200">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Ratings & Reviews</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold">Customer Review</h3>
+          <p>⭐⭐⭐⭐⭐ Great vehicle, smooth ride!</p>
+          <textarea placeholder="Write a review..." class="w-full p-2 mt-4 border rounded"></textarea>
+          <button class="bg-blue-600 text-white px-4 py-2 mt-2 rounded hover:bg-blue-700">Submit</button>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold">Owner Review</h3>
+          <p>⭐⭐⭐⭐ Responsible renter!</p>
+          <textarea placeholder="Write a review..." class="w-full p-2 mt-4 border rounded"></textarea>
+          <button class="bg-blue-600 text-white px-4 py-2 mt-2 rounded hover:bg-blue-700">Submit</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 RENTRO. All rights reserved.</p>
+      <div class="mt-4 space-x-4">
+        <a href="#privacy" class="hover:underline">Privacy Policy</a>
+        <a href="#terms" class="hover:underline">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
